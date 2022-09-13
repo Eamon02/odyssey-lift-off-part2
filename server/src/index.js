@@ -2,7 +2,8 @@ const { ApolloServer } = require('apollo-server');
 const typeDefs = require('./schema');
 // Removed mocks and Swapped for resolvers
 const resolvers = require('./resolvers');
-const TrackAPI = require('./dataSources/track-api');
+
+const TrackAPI = require('./datasources/track-api');
 
 const server = new ApolloServer({
 	typeDefs,
@@ -10,7 +11,7 @@ const server = new ApolloServer({
 	// Connect server to trackAPI
 	dataSources: () => {
 		return {
-			TrackAPI: new TrackAPI(),
+			trackAPI: new TrackAPI(),
 		};
 	},
 });
